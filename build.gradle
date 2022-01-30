@@ -1,0 +1,51 @@
+// -------------------------- 프로젝트의 플러그인 의존성 관리를 위한 설정 -------------------------------
+
+buildscript {
+    ext { // build.gradle에서 사용하는 전역변수를 설정
+        springBootVersion = '2.2.0.RELEASE'
+        // spring-boot-gradle-plugin의 2.1.9.RELEASE를 의존성으로 받겠다는 의미
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+// ---------------------- 앞서 선언한 플러그인 의존성들을 적용할 것인지 결정 ----------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' // 스프링 부트의 의존성들을 관리해 주는 플러그인이라 꼭 추가!
+// 위 4개는 자바와 스프링 부트를 사용하기 위해서는 필수 플러그인이니 항상 추가!
+
+group 'com.yunbo.shim'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories { // 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지
+    mavenCentral() // 기본적으로 많이 사용, 라이브러리 업로드 난이도 때문에 많은 과정과 설정이 필요
+    jcenter() // 라이브러리 업로드 난이도 때문에 jcenter도 많이 사용 (점점 jcenter로 이동)
+}
+
+dependencies { // 프로젝트 개발에 필요한 의존성들을 선언하는 곳
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.projectlombok:lombok')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    // 스프링부트용 Spring Data JPA 추상화 라이브러리.
+    // 스프링 부트 버전에 맞춰 자동으로 JPA관련 라이브러리들의 버전을 관리
+    implementation('com.h2database:h2')
+    // 인메모리 관계형 데이터베이스. 별도의 설치 필요 없이 프로젝트 의존성만으로 관리 가능
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+    // 머스테치 스타터 의존성
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+    // 소셜 기능 구현 시 필요한 의존성
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation("org.springframework.security:spring-security-test")
+}
+
+test {
+    useJUnitPlatform()
+}
