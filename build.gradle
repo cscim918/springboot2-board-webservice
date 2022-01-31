@@ -42,6 +42,7 @@ dependencies { // 프로젝트 개발에 필요한 의존성들을 선언하는 
     // 머스테치 스타터 의존성
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     // 소셜 기능 구현 시 필요한 의존성
+    implementation('org.mariadb.jdbc:mariadb-java-client')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("org.springframework.security:spring-security-test")
 }
