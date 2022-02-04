@@ -18,4 +18,4 @@ script: "./gradlew clean build" # master 브랜치에 푸시되었을 때 수행
 notifications:
   email:
     recepients:
-      - cscim5@naver.comㅊ
+      - cscim5@naver.com
