@@ -23,12 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()// 설정된 값 이외 나머지 URL들
                 // 권한 관리 대상을 지정하는 옵션. URL,HTTP 메소드별로 관리가 가능
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")// 로그아웃 성공 시 /주소로 이동
+                    .logout()
+                        .logoutSuccessUrl("/")// 로그아웃 성공 시 /주소로 이동
                 .and()
-                .oauth2Login()// 로그인 기능에 대한 여러 설정의 진입점
-                .userInfoEndpoint()// 로그인 성공 이후 사용자 정보를 가져올 때의 설정 담당
-                .userService(customOAuth2UserService);// 소셜 로그인 성공 시 후속 조치를 진행할 UserService 인터페이스의 구현체를 등록
+                    .oauth2Login()// 로그인 기능에 대한 여러 설정의 진입점
+                        .userInfoEndpoint()// 로그인 성공 이후 사용자 정보를 가져올 때의 설정 담당
+                            .userService(customOAuth2UserService);// 소셜 로그인 성공 시 후속 조치를 진행할 UserService 인터페이스의 구현체를 등록
 
     }
 }
