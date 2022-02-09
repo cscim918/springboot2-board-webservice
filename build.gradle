@@ -22,7 +22,7 @@ apply plugin: 'io.spring.dependency-management' // 스프링 부트의 의존성
 // 위 4개는 자바와 스프링 부트를 사용하기 위해서는 필수 플러그인이니 항상 추가!
 
 group 'com.yunbo.shim'
-version '1.0-SNAPSHOT'
+version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
 repositories { // 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지
