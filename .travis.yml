@@ -28,7 +28,7 @@ before_deploy: # deploy 명령어가 실행되기 전에 수행
 #  - mv springboot2-board-webservice.zip deploy/springboot2-board-webservice.zip # zip파일을 deploy/springboot2-board-webservice로 이동
 
 deploy:
-  - provide: s3
+  - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo seetings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
     bucket: springboot2-yunbo-build # S3 버킷
